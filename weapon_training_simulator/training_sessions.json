@@ -1,0 +1,26 @@
+{
+  "$id": "https://example.com/schemas/training_sessions.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TrainingSession",
+  "type": "object",
+  "properties": {
+    "session_id": { "type": "integer", "minimum": 1, "description": "Auto-generated primary key" },
+    "scenario_id": { "type": "integer", "description": "FK to weapon_training_scenarios" },
+    "trainee_id": { "type": "integer", "description": "FK to trainees" },
+    "weapon_id": { "type": ["integer", "null"], "description": "FK to weapon_inventory" },
+    "lane_number": { "type": ["integer", "null"], "description": "For range/CTC lane" },
+    "start_timestamp": { "type": "string", "format": "date-time", "description": "EXCON start" },
+    "end_timestamp": { "type": ["string", "null"], "format": "date-time" },
+    "total_shots": { "type": ["integer", "null"], "description": "From SAT/MTS logging" },
+    "hits": { "type": ["integer", "null"] },
+    "hit_percentage": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+    "score": { "type": ["number", "null"], "description": "WE:X gunnery score" },
+    "qualification_achieved": { "type": ["string", "null"], "enum": [null, "basic", "intermediate", "advanced", "expert"] },
+    "instructor_notes": { "type": ["string", "null"], "description": "From WE:Observe" },
+    "video_recording_url": { "type": ["string", "null"], "description": "AAR video link" },
+    "aar_summary": { "type": ["string", "null"], "description": "EXCON after-action review text" },
+    "vulnerability_model": { "type": ["string", "null"], "description": "MTS lethality level, e.g., 'Premium Line Hit'" }
+  },
+  "required": ["session_id", "scenario_id", "trainee_id", "start_timestamp"],
+  "additionalProperties": false
+}
