@@ -1,0 +1,23 @@
+{
+  "$id": "https://example.com/schemas/simulation_reports.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SimulationReport",
+  "type": "object",
+  "properties": {
+    "report_id": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Auto-generated primary key"
+    },
+    "scenario_id": { "type": "integer", "description": "Foreign key to simulation_scenarios" },
+    "trainee_id": { "type": "integer", "description": "Foreign key to trainee_profiles" },
+    "completion_date": { "type": ["string", "null"], "format": "date" },
+    "overall_score": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+    "objectives_met": { "type": ["integer", "null"], "minimum": 0 },
+    "lessons_learned": { "type": ["string", "null"] },
+    "recommendations": { "type": ["array", "null"], "items": { "type": "string" } },
+    "report_status": { "type": ["string", "null"], "enum": [null, "draft", "reviewed", "approved", "archived"] }
+  },
+  "required": ["report_id", "scenario_id", "trainee_id"],
+  "additionalProperties": false
+}
