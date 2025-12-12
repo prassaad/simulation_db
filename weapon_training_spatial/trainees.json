@@ -1,0 +1,19 @@
+{
+  "properties": {
+    "trainee_id": { "type": "integer" },
+    "badge_number": { "type": ["string", "null"] },
+    "last_name": { "type": ["string", "null"] },
+    "first_name": { "type": ["string", "null"] },
+    "agency": { "type": ["string", "null"] },
+    "unit": { "type": ["string", "null"] },
+    "home_base_location": {
+      "type": ["object", "null"],
+      "description": "Trainee's unit base (PostGIS GEOMETRY(POINT,4326))",
+      "properties": {
+        "type": { "const": "Point" },
+        "coordinates": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 }
+      },
+      "required": ["type", "coordinates"]
+    }
+  }
+}
