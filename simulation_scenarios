@@ -1,0 +1,26 @@
+{
+  "$id": "https://example.com/schemas/simulation_scenarios.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SimulationScenario",
+  "type": "object",
+  "properties": {
+    "scenario_id": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Auto-generated primary key"
+    },
+    "scenario_name": { "type": ["string", "null"], "maxLength": 255 },
+    "threat_type": { 
+      "type": ["string", "null"], 
+      "enum": [null, "cyber_attack", "border_incursion", "espionage", "terrorist_threat", "natural_disaster"] 
+    },
+    "difficulty_level": { "type": ["string", "null"], "enum": [null, "easy", "medium", "hard", "expert"] },
+    "duration_minutes": { "type": ["integer", "null"], "minimum": 1 },
+    "objectives": { "type": ["array", "null"], "items": { "type": "string" } },
+    "environment": { "type": ["string", "null"], "maxLength": 255, "description": "e.g., urban, rural, cyber" },
+    "required_assets": { "type": ["array", "null"], "items": { "type": "string" } },
+    "classification_level": { "type": ["string", "null"], "enum": [null, "unclassified", "confidential", "secret", "top_secret"] }
+  },
+  "required": ["scenario_id"],
+  "additionalProperties": false
+}
