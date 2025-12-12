@@ -1,0 +1,26 @@
+{
+  "$id": "https://example.com/schemas/weapon_training_scenarios.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WeaponTrainingScenario",
+  "type": "object",
+  "properties": {
+    "scenario_id": { "type": "integer", "minimum": 1, "description": "Auto-generated primary key" },
+    "scenario_code": { "type": ["string", "null"], "maxLength": 50, "description": "e.g., FBI-Q-2025 or SAAB-EXCON-001" },
+    "title": { "type": ["string", "null"], "maxLength": 255, "description": "Scenario name, e.g., Urban Anti-Tank Engagement" },
+    "weapon_category": { 
+      "type": ["string", "null"], 
+      "enum": [null, "pistol", "rifle", "shotgun", "sniper", "anti_tank", "machine_gun", "less_lethal"] 
+    },
+    "qualification_course": { "type": ["string", "null"], "enum": [null, "FBI_Q", "HRT", "SWAT", "USMC_Marksmanship", "SAAB_ATW", "Civilian_CCW"] },
+    "difficulty_level": { "type": ["string", "null"], "enum": [null, "basic", "intermediate", "advanced", "expert", "brigade"] },
+    "time_limit_seconds": { "type": ["integer", "null"], "minimum": 10, "description": "EXCON-style time limit" },
+    "required_hits": { "type": ["integer", "null"], "minimum": 0, "description": "Minimum hits for qualification" },
+    "max_rounds": { "type": ["integer", "null"], "minimum": 1 },
+    "target_configuration": { "type": ["string", "null"], "description": "MTS config, e.g., 'Premium Line with vulnerability modeling'" },
+    "environmental_factors": { "type": ["array", "null"], "items": { "type": "string" }, "description": "e.g., ['wind_10knots', 'temperature_25C'] for CBL simulation" },
+    "classification": { "type": ["string", "null"], "enum": [null, "unclassified", "FOUO", "secret", "top_secret"] },
+    "is_active": { "type": "boolean", "default": true, "description": "For SAAB CTC scalability" }
+  },
+  "required": ["scenario_id"],
+  "additionalProperties": false
+}
