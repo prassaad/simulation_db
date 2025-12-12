@@ -1,0 +1,21 @@
+{
+  "$id": "https://example.com/schemas/weapon_inventory.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WeaponAsset",
+  "type": "object",
+  "properties": {
+    "weapon_id": { "type": "integer", "minimum": 1, "description": "Auto-generated primary key" },
+    "serial_number": { "type": ["string", "null"], "maxLength": 100, "description": "Unique hardware ID" },
+    "make": { "type": ["string", "null"], "maxLength": 100, "description": "e.g., SAAB, Glock, Carl-Gustaf" },
+    "model": { "type": ["string", "null"], "maxLength": 100, "description": "e.g., AT4, NLAW" },
+    "caliber": { "type": ["string", "null"], "maxLength": 50, "description": "e.g., 9x19mm, 84mm" },
+    "weapon_type": { "type": ["string", "null"], "enum": [null, "pistol", "rifle", "shotgun", "anti_tank", "submachine_gun"] },
+    "barrel_length_in": { "type": ["number", "null"], "description": "For ballistic simulation" },
+    "sights": { "type": ["string", "null"], "description": "e.g., 'Iron Sights with SAT Alignment'" },
+    "assigned_to_trainee_id": { "type": ["integer", "null"], "description": "FK to trainees" },
+    "status": { "type": ["string", "null"], "enum": [null, "available", "in_use", "maintenance", "decommissioned", "calibrated"] },
+    "simulation_mode": { "type": ["string", "null"], "enum": [null, "laser_sat", "ballistic_cbl", "live_fire"] }
+  },
+  "required": ["weapon_id"],
+  "additionalProperties": false
+}
