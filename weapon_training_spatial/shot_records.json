@@ -1,0 +1,50 @@
+{
+  "$id": "https://example.com/schemas/shot_records.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ShotRecord",
+  "type": "object",
+  "properties": {
+    "shot_id": { "type": "integer", "minimum": 1 },
+    "session_id": { "type": "integer" },
+    "shot_number": { "type": "integer" },
+    "timestamp_ms": { "type": "integer" },
+    "shooter_position": {
+      "type": "object",
+      "description": "Exact shooter location at firing moment (POINTZ,4326)",
+      "properties": {
+        "type": { "const": "Point" },
+        "coordinates": { "type": "array", "minItems": 3, "maxItems": 3 }
+      },
+      "required": ["type", "coordinates"]
+    },
+    "target_position": {
+      "type": "object",
+      "description": "Target location at time of impact (POINTZ,4326)",
+      "properties": {
+        "type": { "const": "Point" },
+        "coordinates": { "type": "array", "minItems": 3, "maxItems": 3 }
+      }
+    },
+    "impact_point": {
+      "type": ["object", "null"],
+      "description": "Actual hit point on target (POINTZ,4326) – from MTS/SAAB sensors",
+      "properties": {
+        "type": { "const": "Point" },
+        "coordinates": { "type": "array", "minItems": 3, "maxItems": 3 }
+      }
+    },
+    "trajectory": {
+      "type": ["object", "null"],
+      "description": "Full 3D ballistic/laser trajectory (LINESTRINGZ,4326) – SAAB CBL/GAMER",
+      "properties": {
+        "type": { "const": "LineString" },
+        "coordinates": { "type": "array", "items": { "type": "array", "minItems": 3 } }
+      }
+    },
+    "distance_meters": { "type": ["number", "null"] },
+    "muzzle_velocity_fps": { "type": ["integer", "null"] },
+    "hit_outcome": { "type": ["string", "null"], "enum": [null, "lethal", "wound", "miss", "near_miss", "proximity"] },
+    "target_zone_hit": { "type": ["string", "null"] }
+  },
+  "required": ["shot_id", "session_id", "shot_number", "timestamp_ms", "shooter_position"]
+}
