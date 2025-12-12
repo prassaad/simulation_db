@@ -1,0 +1,40 @@
+{
+  "$id": "https://example.com/schemas/weapon_training_scenarios.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WeaponTrainingScenario",
+  "type": "object",
+  "properties": {
+    "scenario_id": { "type": "integer", "minimum": 1 },
+    "scenario_code": { "type": ["string", "null"], "maxLength": 50 },
+    "title": { "type": ["string", "null"], "maxLength": 255 },
+    "weapon_category": { "type": ["string", "null"], "enum": [null, "pistol", "rifle", "anti_tank", "machine_gun"] },
+    "difficulty_level": { "type": ["string", "null"], "enum": [null, "basic", "intermediate", "advanced", "expert"] },
+    "time_limit_seconds": { "type": ["integer", "null"] },
+    "exercise_boundary": {
+      "type": ["object", "null"],
+      "description": "Polygon defining the training area (GeoJSON-style, stored as PostGIS GEOMETRY(POLYGON,4326))",
+      "properties": {
+        "type": { "const": "Polygon" },
+        "coordinates": { "type": "array" }
+      },
+      "required": ["type", "coordinates"]
+    },
+    "target_zones": {
+      "type": ["array", "null"],
+      "description": "Array of target engagement zones (PostGIS GEOMETRY(POLYGON,4326))",
+      "items": {
+        "type": "object",
+        "properties": {
+          "zone_id": { "type": "string" },
+          "name": { "type": "string" },
+          "geometry": { "type": "object" }
+        },
+        "required": ["zone_id", "geometry"]
+      }
+    },
+    "environmental_factors": { "type": ["array", "null"], "items": { "type": "string" } },
+    "classification": { "type": ["string", "null"], "enum": [null, "unclassified", "FOUO", "secret", "top_secret"] }
+  },
+  "required": ["scenario_id"],
+  "additionalProperties": false
+}
