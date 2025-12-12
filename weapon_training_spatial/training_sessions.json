@@ -1,0 +1,35 @@
+{
+  "properties": {
+    "session_id": { "type": "integer" },
+    "scenario_id": { "type": "integer" },
+    "trainee_id": { "type": "integer" },
+    "weapon_id": { "type": ["integer", "null"] },
+    "lane_number": { "type": ["integer", "null"] },
+    "start_timestamp": { "type": "string", "format": "date-time" },
+    "end_timestamp": { "type": ["string", "null"], "format": "date-time" },
+    "firing_position_start": {
+      "type": ["object", "null"],
+      "description": "Where the shooter started (PostGIS GEOMETRY(POINTZ,4326) with altitude)",
+      "properties": {
+        "type": { "const": "Point" },
+        "coordinates": { "type": "array", "minItems": 3, "maxItems": 3 }
+      },
+      "required": ["type", "coordinates"]
+    },
+    "session_path": {
+      "type": ["object", "null"],
+      "description": "Trainee movement during session (PostGIS GEOMETRY(LINESTRINGZ,4326))",
+      "properties": {
+        "type": { "const": "LineString" },
+        "coordinates": { "type": "array", "items": { "type": "array", "minItems": 3 } }
+      }
+    },
+    "total_shots": { "type": ["integer", "null"] },
+    "hits": { "type": ["integer", "null"] },
+    "hit_percentage": { "type": ["number", "null"] },
+    "score": { "type": ["number", "null"] },
+    "qualification_achieved": { "type": ["string", "null"] },
+    "aar_summary": { "type": ["string", "null"] }
+  },
+  "required": ["session_id", "scenario_id", "trainee_id", "start_timestamp"]
+}
