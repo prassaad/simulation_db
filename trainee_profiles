@@ -1,0 +1,22 @@
+{
+  "$id": "https://example.com/schemas/trainee_profiles.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TraineeProfile",
+  "type": "object",
+  "properties": {
+    "trainee_id": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Auto-generated primary key"
+    },
+    "name": { "type": ["string", "null"], "maxLength": 255 },
+    "agency": { "type": ["string", "null"], "maxLength": 255, "description": "e.g., FBI, CIA, NSA" },
+    "rank": { "type": ["string", "null"], "maxLength": 100 },
+    "clearance_level": { "type": ["string", "null"], "enum": [null, "none", "confidential", "secret", "top_secret"] },
+    "specializations": { "type": ["array", "null"], "items": { "type": "string" } },
+    "total_simulations_completed": { "type": ["integer", "null"], "minimum": 0 },
+    "performance_score": { "type": ["number", "null"], "minimum": 0, "maximum": 100 }
+  },
+  "required": ["trainee_id"],
+  "additionalProperties": false
+}
