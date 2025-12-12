@@ -1,0 +1,21 @@
+{
+  "$id": "https://example.com/schemas/simulation_assets.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SimulationAsset",
+  "type": "object",
+  "properties": {
+    "asset_id": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Auto-generated primary key"
+    },
+    "asset_type": { "type": ["string", "null"], "enum": [null, "vehicle", "weapon", "gadget", "software_tool", "defensive_structure"] },
+    "name": { "type": ["string", "null"], "maxLength": 255 },
+    "description": { "type": ["string", "null"] },
+    "cost_units": { "type": ["number", "null"], "minimum": 0 },
+    "availability_level": { "type": ["string", "null"], "enum": [null, "basic", "advanced", "restricted"] },
+    "scenario_compatibility": { "type": ["array", "null"], "items": { "type": "integer" }, "description": "Array of scenario_ids" }
+  },
+  "required": ["asset_id"],
+  "additionalProperties": false
+}
