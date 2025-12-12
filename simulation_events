@@ -1,0 +1,22 @@
+{
+  "$id": "https://example.com/schemas/simulation_events.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SimulationEvent",
+  "type": "object",
+  "properties": {
+    "event_id": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Auto-generated primary key"
+    },
+    "scenario_id": { "type": "integer", "description": "Foreign key to simulation_scenarios" },
+    "trainee_id": { "type": "integer", "description": "Foreign key to trainee_profiles" },
+    "event_timestamp": { "type": ["string", "null"], "format": "date-time" },
+    "event_type": { "type": ["string", "null"], "enum": [null, "start", "action", "decision_point", "threat_encounter", "end"] },
+    "description": { "type": ["string", "null"] },
+    "outcome": { "type": ["string", "null"], "enum": [null, "success", "failure", "partial"] },
+    "assets_used": { "type": ["array", "null"], "items": { "type": "integer" }, "description": "Array of asset_ids" }
+  },
+  "required": ["event_id", "scenario_id", "trainee_id"],
+  "additionalProperties": false
+}
