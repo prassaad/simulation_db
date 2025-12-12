@@ -1,0 +1,73 @@
+{
+  "scenario": {
+    "scenario_id": 101,
+    "scenario_code": "SAAB-EXCON-ATW",
+    "title": "Anti-Tank Urban Engagement",
+    "weapon_category": "anti_tank",
+    "qualification_course": "SAAB_ATW",
+    "time_limit_seconds": 300,
+    "required_hits": 80,
+    "max_rounds": 100,
+    "target_configuration": "MTS Premium Line",
+    "environmental_factors": ["wind_5knots", "temperature_20C"],
+    "classification": "FOUO"
+  },
+  "trainee": {
+    "trainee_id": 8501,
+    "badge_number": "SAAB-P001",
+    "last_name": "Ramirez",
+    "first_name": "Carlos",
+    "agency": "USMC",
+    "unit": "Anti-Tank Platoon",
+    "career_hit_percentage": 87.5,
+    "observer_notes": "Strong tactical positioning; needs faster split times."
+  },
+  "weapon": {
+    "weapon_id": 3201,
+    "serial_number": "CARL-GUSTAF-M4-789",
+    "make": "SAAB",
+    "model": "Carl-Gustaf M4",
+    "caliber": "84mm",
+    "simulation_mode": "laser_sat"
+  },
+  "session": {
+    "session_id": 9001,
+    "scenario_id": 101,
+    "trainee_id": 8501,
+    "weapon_id": 3201,
+    "lane_number": 5,
+    "start_timestamp": "2025-12-12T14:00:00Z",
+    "end_timestamp": "2025-12-12T14:05:15Z",
+    "total_shots": 45,
+    "hits": 42,
+    "hit_percentage": 93.33,
+    "score": 92.0,
+    "qualification_achieved": "expert",
+    "vulnerability_model": "lethal_top_attack",
+    "aar_summary": "EXCON AAR: 95% trajectory accuracy; recommend CBRN integration."
+  },
+  "shots": [
+    {
+      "shot_id": 100001,
+      "session_id": 9001,
+      "shot_number": 1,
+      "timestamp_ms": 4500,
+      "split_time_ms": 1200,
+      "target_zone_hit": "A",
+      "x_impact_cm": 2.5,
+      "y_impact_cm": -1.2,
+      "muzzle_velocity_fps": 2500,
+      "environmental_adjust": "wind_compensated",
+      "hit_outcome": "lethal"
+    },
+    {
+      "shot_id": 100045,
+      "session_id": 9001,
+      "shot_number": 45,
+      "timestamp_ms": 305000,
+      "split_time_ms": 850,
+      "target_zone_hit": "proximity_burst",
+      "hit_outcome": "wound"
+    }
+  ]
+}
