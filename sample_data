@@ -1,0 +1,76 @@
+{
+  "scenario": {
+    "scenario_id": 5001,
+    "scenario_name": "Cyber Intrusion Defense",
+    "threat_type": "cyber_attack",
+    "difficulty_level": "hard",
+    "duration_minutes": 120,
+    "objectives": ["Detect intrusion", "Neutralize threat", "Secure network"],
+    "environment": "cyber",
+    "required_assets": ["Firewall Tool", "Intrusion Detection System"],
+    "classification_level": "secret"
+  },
+  "trainee": {
+    "trainee_id": 2001,
+    "name": "Agent Jane Doe",
+    "agency": "NSA",
+    "rank": "Senior Analyst",
+    "clearance_level": "top_secret",
+    "specializations": ["Cybersecurity", "Network Forensics"],
+    "total_simulations_completed": 15,
+    "performance_score": 92.5
+  },
+  "assets": [
+    {
+      "asset_id": 3001,
+      "asset_type": "software_tool",
+      "name": "Firewall Tool",
+      "description": "Advanced packet filtering software",
+      "cost_units": 500.0,
+      "availability_level": "advanced",
+      "scenario_compatibility": [5001]
+    },
+    {
+      "asset_id": 3002,
+      "asset_type": "software_tool",
+      "name": "Intrusion Detection System",
+      "description": "Real-time monitoring and alert system",
+      "cost_units": 750.0,
+      "availability_level": "restricted",
+      "scenario_compatibility": [5001]
+    }
+  ],
+  "events": [
+    {
+      "event_id": 4001,
+      "scenario_id": 5001,
+      "trainee_id": 2001,
+      "event_timestamp": "2025-12-12T14:30:00Z",
+      "event_type": "start",
+      "description": "Simulation initiated",
+      "outcome": "success",
+      "assets_used": []
+    },
+    {
+      "event_id": 4002,
+      "scenario_id": 5001,
+      "trainee_id": 2001,
+      "event_timestamp": "2025-12-12T15:00:00Z",
+      "event_type": "threat_encounter",
+      "description": "Detected malware injection",
+      "outcome": "partial",
+      "assets_used": [3001, 3002]
+    }
+  ],
+  "report": {
+    "report_id": 6001,
+    "scenario_id": 5001,
+    "trainee_id": 2001,
+    "completion_date": "2025-12-12",
+    "overall_score": 88.0,
+    "objectives_met": 2,
+    "lessons_learned": "Improved response time needed for initial detection",
+    "recommendations": ["Additional training on anomaly detection", "Upgrade to latest IDS version"],
+    "report_status": "reviewed"
+  }
+}
