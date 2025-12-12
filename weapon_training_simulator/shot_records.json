@@ -1,0 +1,22 @@
+{
+  "$id": "https://example.com/schemas/shot_records.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ShotRecord",
+  "type": "object",
+  "properties": {
+    "shot_id": { "type": "integer", "minimum": 1, "description": "Auto-generated primary key" },
+    "session_id": { "type": "integer", "description": "FK to training_sessions" },
+    "shot_number": { "type": "integer", "minimum": 1 },
+    "timestamp_ms": { "type": "integer", "description": "Relative to session start" },
+    "split_time_ms": { "type": ["integer", "null"], "description": "WE:X timing from aim to fire" },
+    "target_zone_hit": { "type": ["string", "null"], "enum": [null, "A", "B", "C", "D", "miss", "proximity_burst"] },
+    "x_impact_cm": { "type": ["number", "null"], "description": "MTS impact coordinate" },
+    "y_impact_cm": { "type": ["number", "null"] },
+    "muzzle_velocity_fps": { "type": ["integer", "null"], "description": "For CBL ballistic sim" },
+    "trigger_pull_weight_lbs": { "type": ["number", "null"] },
+    "environmental_adjust": { "type": ["string", "null"], "description": "e.g., 'wind_compensated' from SAAB factors" },
+    "hit_outcome": { "type": ["string", "null"], "enum": [null, "lethal", "wound", "miss", "top_attack"] }
+  },
+  "required": ["shot_id", "session_id", "shot_number", "timestamp_ms"],
+  "additionalProperties": false
+}
