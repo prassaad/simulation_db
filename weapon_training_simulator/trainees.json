@@ -1,0 +1,21 @@
+{
+  "$id": "https://example.com/schemas/trainees.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Trainee",
+  "type": "object",
+  "properties": {
+    "trainee_id": { "type": "integer", "minimum": 1, "description": "Auto-generated primary key" },
+    "badge_number": { "type": ["string", "null"], "maxLength": 50, "description": "Unique identifier, e.g., SAAB participant ID" },
+    "last_name": { "type": ["string", "null"], "maxLength": 100 },
+    "first_name": { "type": ["string", "null"], "maxLength": 100 },
+    "agency": { "type": ["string", "null"], "maxLength": 255, "description": "e.g., FBI, USMC, or multinational partner" },
+    "unit": { "type": ["string", "null"], "maxLength": 100, "description": "e.g., SWAT Team or Brigade Element" },
+    "clearance_level": { "type": ["string", "null"], "enum": [null, "none", "FOUO", "secret", "top_secret"] },
+    "weapon_qualifications": { "type": ["array", "null"], "items": { "type": "string" }, "description": "e.g., ['Carl-Gustaf Expert', 'AT4 Certified']" },
+    "total_rounds_fired": { "type": ["integer", "null"], "minimum": 0, "description": "Lifetime metric from GAMER system" },
+    "career_hit_percentage": { "type": ["number", "null"], "minimum": 0, "maximum": 100, "description": "Aggregate from WE:Observe" },
+    "observer_notes": { "type": ["string", "null"], "description": "Subjective feedback from WE:Observe app" }
+  },
+  "required": ["trainee_id"],
+  "additionalProperties": false
+}
